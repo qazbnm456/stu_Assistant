@@ -1,0 +1,19 @@
+$("#m_form").val("");
+$flists = $("#feedflow").children().find("ul");
+var time = 1500;
+
+$flists.each(function() {
+    setTimeout($(this).removeClass("in"), time)
+    time += 1500;
+});
+$("#feedflow").html("<%= escape_javascript(render 'shared/feed', feed_items: @feed_items) %>")
+/*$("#feedflow").children().find("ul").each(function(){
+    $(this).addClass("in");
+})*/
+$flists = $("#feedflow").children().find("ul");
+var time = 1500;
+
+$flists.each(function() {
+    setTimeout($(this).addClass("in"), time)
+    time += 1500;
+});

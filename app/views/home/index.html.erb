@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="col-md-4" style="background-color: white; " style="opacity: 0.9;">
+    <%= render 'shared/user_info', user: @user %>
+  </div>
+  <div class="col-md-7">
+    <% if signed_in? %>
+        <section class="micropost_form">
+          <%= render 'shared/micropost_form', micropost: @micropost %>
+        </section>
+        <div id="feedflow">
+          <%= render 'shared/feed', feed_items: @feed_items %>
+        </div>
+    <% end %>
+  </div>
+  <div class="col-md-1">
+    <div class="container">
+      <%= image_tag @user.avatar.url(:thumb), :class => 'rectan' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div style="position: relative; top: -5250px; left: 20px;">
+        <a class="btn btn-sm" data-js="btn" href="/mycourse">
+          <span class="btn-inr">
+            <span class="txt-a">我的課程</span>
+            <span class="txt-b">點擊開啟</span>
+          </span>
+         </a>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+    function toggleButton(el) {
+        var body = document.body;
+        var element = document.querySelector(el);
+        element.addEventListener('mouseenter', function(e) {
+            e.target.classList.add('active');
+            body.classList.add('blur');
+        }, false);
+        element.addEventListener('mouseleave', function(e) {
+            e.target.classList.remove('active');
+            body.classList.remove('blur');
+        }, false);
+    };
+
+    toggleButton('[data-js="btn"]');
+
+</script>

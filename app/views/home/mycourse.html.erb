@@ -1,0 +1,14 @@
+<% @data_hash.each do |a, b| %>
+  <p>
+    課程：<%= a %>
+  </p>
+  <p>
+    公告：
+    <% if b.each do |c, d| %>
+    <ul>
+      <%= d %>
+    </ul>
+    <% end.empty? %>
+    <% end %>
+  </p>
+<% end %>

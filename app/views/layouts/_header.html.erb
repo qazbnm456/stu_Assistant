@@ -1,0 +1,58 @@
+<div class="container">
+    <header class="navbar navbar-inverse navbar-fixed-top" style="margin-top: -20px;">
+      <div class="navbar-inner">
+            <div class="navbar-header">
+              <a href="/">
+                <div class="navbar-brand">
+                  <div class="navbar-brand-logo pull-left">
+                    <b>NSYSU-student Assistant</b>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="navbar-collapse collapse navbar-warning-collapse navbar-responsive-collapse">
+              <ul class="nav navbar-nav navbar-right">
+                <% if user_signed_in? %>
+                  <li><%= link_to  show_user_path current_user do %>
+                    <%= image_tag "icon/home.png", :width => '14px', :height => '14px' %>
+                    My profile
+                  <% end %></li>
+                <% end %>
+                <li><%= link_to "Help", help_path %></li>
+                <% if user_signed_in? %>
+                  <li id="fat-menu" class="dropdown">
+                    <a href="#" class="dropdown-toggle withripple" data-toggle="dropdown">
+                      <%= current_user.name %> <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><%= link_to  edit_user_registration_path do %>
+                        <%= image_tag "icon/edit.png", :width => '14px', :height => '14px' %>
+                        Edit profile
+                      <% end %></li>
+                      <% if current_user.admin? %>
+                          <li><%= link_to rails_admin_path do %>
+                            <i class="mdi-action-account-circle"></i>
+                              Admin
+                            <% end %></li>
+                      <% end %>
+                      <li class="divider"></li>
+                        <li><%= link_to  logout_path do %>
+                          <i class="mdi-action-highlight-remove"></i>
+                            Log out
+                        <% end %></li>
+                    </ul>
+                  </li>
+                <% else %>
+                  <li><%= link_to "Log in", login_path %></li>
+                <% end %>
+              </ul>
+            </div>
+        </div>
+    </header>
+</div>
+
+<script>
+      $("#click").click(function() {
+          location.href = '/'
+      });
+</script>
